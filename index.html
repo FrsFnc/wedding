@@ -88,8 +88,6 @@
             font-family: 'Montserrat', sans-serif;
             font-weight: 300;
         }
-        .hearts { font-size: 40px; animation: pulse 2s ease-in-out infinite; margin-top: 20px; filter: grayscale(0.3); }
-        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         .language-switcher { 
             position: fixed; 
@@ -141,12 +139,6 @@
                 #d4af6a 20px,
                 #d4af6a 30px
             ) 8;
-            background-image: 
-                linear-gradient(#faf8f0, #faf8f0),
-                repeating-linear-gradient(0deg, #c9a961 0px, #c9a961 2px, transparent 2px, transparent 4px),
-                repeating-linear-gradient(90deg, #c9a961 0px, #c9a961 2px, transparent 2px, transparent 4px);
-            background-origin: padding-box, border-box, border-box;
-            background-clip: padding-box, border-box, border-box;
         }
         .section-content { max-width: 900px; margin: 0 auto; }
         .info-box { 
@@ -186,8 +178,13 @@
             flex-wrap: wrap; 
             font-weight: 400;
             letter-spacing: 2px;
+            line-height: 1.3;
         }
-        .icon { font-size: 1.2em; animation: bounce 2s ease-in-out infinite; }
+        .icon { 
+            font-size: 1.2em; 
+            animation: bounce 2s ease-in-out infinite;
+            flex-shrink: 0;
+        }
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
         .info-box p { font-size: 1.15em; line-height: 1.9; color: #6b5d4f; font-weight: 400; }
         .maps-button { 
@@ -205,7 +202,15 @@
             font-family: 'Montserrat', sans-serif;
         }
         .maps-button:hover { transform: translateY(-3px); box-shadow: 0 6px 25px rgba(201, 169, 97, 0.5); }
-        .hotel-list { display: block; margin-top: 10px; line-height: 2; }
+        .hotel-list { 
+            display: block; 
+            margin-top: 10px; 
+            line-height: 2.2; 
+        }
+        .hotel-item {
+            display: block;
+            margin-bottom: 8px;
+        }
         .phone-link { 
             color: #c9a961; 
             text-decoration: none; 
@@ -439,6 +444,8 @@
             font-weight: 500; 
             transition: all 0.3s ease; 
             box-shadow: 0 5px 20px rgba(201, 169, 97, 0.4); 
+			display: block;
+            margin: 0 auto;
         }
         .popup-close:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(201, 169, 97, 0.6); }
         .confetti { position: absolute; width: 10px; height: 10px; background: #c9a961; animation: confettiFall 3s ease-out forwards; }
@@ -451,6 +458,130 @@
             font-size: 1.2em; 
             margin-top: 50px; 
         }
+        
+        .audio-permission-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 10003;
+        }
+        
+        .audio-permission-popup.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .audio-permission-box {
+            background: linear-gradient(135deg, #faf8f0 0%, #ffffff 100%);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 450px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 4px solid #c9a961;
+        }
+        
+        .audio-permission-box h3 {
+            color: #a08763;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        .audio-permission-box p {
+            color: #6b5d4f;
+            font-size: 1.15em;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        .popup-icon-audio {
+            font-size: 50px;
+            animation: popupBounce 1s ease-in-out infinite;
+            margin-bottom: 15px;
+        }
+        
+        .audio-btn-yes {
+            background: linear-gradient(135deg, #c9a961 0%, #b8945a 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1em;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(201, 169, 97, 0.4);
+        }
+        
+        .audio-btn-yes:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(201, 169, 97, 0.6);
+        }
+        
+        .audio-btn-no {
+            background: #999;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1em;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .audio-btn-no:hover {
+            background: #777;
+            transform: translateY(-2px);
+        }
+        
+        .audio-control {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 9997;
+        }
+        
+        .audio-toggle-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #c9a961;
+            color: #a08763;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .audio-toggle-btn:hover {
+            background: #faf8f0;
+            transform: scale(1.1);
+        }
+        
+        .audio-toggle-btn.muted {
+            opacity: 0.6;
+        }
+        
         @media (max-width: 768px) { 
             h1 { font-size: 2em; } 
             .names { font-size: 2.5em; }
@@ -458,160 +589,101 @@
             .date { font-size: 1.3em; } 
             .countdown-box { min-width: 70px; padding: 15px 10px; } 
             .countdown-number { font-size: 2em; } 
-            .info-box h2 { font-size: 1.5em; } 
+            .info-box h2 { 
+                font-size: 1.5em; 
+                gap: 10px;
+            }
+            .icon {
+                align-self: flex-start;
+            }
+            .hotel-list {
+                line-height: 2.5;
+            }
+            .hotel-item {
+                margin-bottom: 15px;
+            }
+            .hotel-item .phone-link {
+                display: block;
+                margin-top: 5px;
+                margin-left: 24px;
+            }
             .loader-spinner { width: 60px; height: 60px; border-width: 6px; } 
-            section { margin-top: -40px; padding: 40px 15px; } 
+            section { margin-top: -40px; padding: 40px 15px; }
+            .language-switcher {
+                top: 15px;
+                right: 15px;
+                padding: 8px 12px;
+            }
+            .lang-btn {
+                padding: 6px 12px;
+                font-size: 0.85em;
+            }
+            .audio-control {
+                left: 15px;
+                top: 80px;
+            }
+            .audio-permission-box {
+                padding: 30px 20px;
+            }
+            .audio-permission-box h3 {
+                font-size: 1.5em;
+            }
         }
 		
 		
-.audio-permission-popup {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(5px);
-    z-index: 10003;
-}
-
-.audio-permission-popup.show {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-}
-
-.audio-permission-box {
-    background: linear-gradient(135deg, #faf8f0 0%, #ffffff 100%);
-    padding: 40px 30px;
-    border-radius: 20px;
-    text-align: center;
-    max-width: 450px;
-    width: 100%;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-    border: 4px solid #c9a961;
-    animation: audioPopupScale 0.5s ease-out forwards;
-}
-.audio-permission-box h3 {
-    color: #a08763;
-    font-size: 1.8em;
-    margin-bottom: 15px;
-    font-weight: 400;
-    letter-spacing: 2px;
-    font-family: 'Cormorant Garamond', serif;
-}
-
-.audio-permission-box p {
-    color: #6b5d4f;
-    font-size: 1.15em;
-    margin-bottom: 10px;
-    line-height: 1.6;
-}
-
-.popup-icon-audio {
-    font-size: 50px;
-    animation: popupBounce 1s ease-in-out infinite;
-    margin-bottom: 15px;
-}
-
-.audio-btn-yes {
-    background: linear-gradient(135deg, #c9a961 0%, #b8945a 100%);
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 25px;
-    font-size: 1em;
-    cursor: pointer;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 20px rgba(201, 169, 97, 0.4);
-}
-
-.audio-btn-yes:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(201, 169, 97, 0.6);
-}
-
-.audio-btn-no {
-    background: #999;
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 25px;
-    font-size: 1em;
-    cursor: pointer;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.audio-btn-no:hover {
-    background: #777;
-    transform: translateY(-2px);
-}
-
-/* Audio Control Button */
-.audio-control {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 9997;
-}
-
-.audio-toggle-btn {
-    background: rgba(255, 255, 255, 0.9);
-    border: 2px solid #c9a961;
-    color: #a08763;
-    padding: 10px 15px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 1.2em;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.audio-toggle-btn:hover {
-    background: #faf8f0;
-    transform: scale(1.1);
-}
-
-.audio-toggle-btn.muted {
-    opacity: 0.6;
-}
-
-@media (max-width: 768px) {
-    .audio-control {
-        left: 20px;
-        top: 80px;
+		@media (min-width: 768px) {
+    .hotel-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px 30px;
+        margin: 10px 0;
     }
     
-    .audio-permission-box {
-        padding: 30px 20px;
+    .hotel-item {
+        display: inline-block;
+        width: 100%;
     }
     
-    .audio-permission-box h3 {
-        font-size: 1.5em;
+    .hotel-item br {
+        display: block;
+    }
+    
+    /* Rimuovi i <br> tra gli hotel items su desktop */
+    .hotel-list > br {
+        display: none;
     }
 }
+
+/* Mobile: mantieni layout verticale */
+@media (max-width: 767px) {
+    .hotel-list {
+        display: block;
+    }
+    
+    .hotel-item {
+        display: block;
+        margin-bottom: 10px;
+    }
+}
+		
 		
 		
     </style>
 </head>	
 <body>
     <div id="sparkles"></div>
+    
     <div class="language-switcher">
         <button class="lang-btn active" onclick="setLanguage('it')" id="btnIt">IT</button>
         <button class="lang-btn" onclick="setLanguage('en')" id="btnEn">EN</button>
     </div>
+    
+    <div class="audio-control" id="audioControl" style="display: none;">
+        <button class="audio-toggle-btn" onclick="toggleMusic()" id="audioToggleBtn">
+            🔊
+        </button>
+    </div>
+    
     <div class="hero">
         <div class="rings">💍</div>
         <h1 class="lang-it">Siete Invitati</h1>
@@ -623,8 +695,8 @@
             <span class="ampersand">&</span>
             Francesco
         </div>
-        <div class="date lang-it">24 Agosto 2026 - Ore 18:00</div>
-        <div class="date lang-en">August 24, 2026 - 6:00 PM</div>
+        <div class="date lang-it">24 Agosto 2026 - Ore 17:30</div>
+        <div class="date lang-en">August 24, 2026 - 5:30 PM</div>
         <div class="countdown">
             <div class="countdown-box"><div class="countdown-number" id="days">0</div><div class="countdown-label lang-it">Giorni</div><div class="countdown-label lang-en">Days</div></div>
             <div class="countdown-box"><div class="countdown-number" id="hours">0</div><div class="countdown-label lang-it">Ore</div><div class="countdown-label lang-en">Hours</div></div>
@@ -632,6 +704,7 @@
             <div class="countdown-box"><div class="countdown-number" id="seconds">0</div><div class="countdown-label lang-it">Secondi</div><div class="countdown-label lang-en">Seconds</div></div>
         </div>
     </div>
+    
     <div class="container"><section><div class="section-content">
         <div class="info-box">
             <h2 class="lang-it"><span class="icon">⛪</span> Cerimonia e Ricevimento</h2>
@@ -639,12 +712,38 @@
             <p class="lang-it"><strong>Dove:</strong> Villa Grandinetti (Nocera Terinese CZ)<br><strong>Cerimonia in spiaggia:</strong> Ore 18:00<br><strong>Ricevimento:</strong> A seguire nello stesso luogo<br><br><a href="https://www.google.com/maps/search/?api=1&query=Villa+Grandinetti+Nocera+Terinese" target="_blank" class="maps-button">Apri in Google Maps</a></p>
             <p class="lang-en"><strong>Where:</strong> Villa Grandinetti (Nocera Terinese CZ)<br><strong>Beach Ceremony:</strong> 6:00 PM<br><strong>Reception:</strong> Following at the same location<br><br><a href="https://www.google.com/maps/search/?api=1&query=Villa+Grandinetti+Nocera+Terinese" target="_blank" class="maps-button">Open in Google Maps</a></p>
         </div>
+        
         <div class="info-box">
             <h2 class="lang-it"><span class="icon">ℹ️</span> Informazioni Utili</h2>
             <h2 class="lang-en"><span class="icon">ℹ️</span> Useful Information</h2>
-            <p class="lang-it"><strong>Parcheggio:</strong> Disponibile presso la villa<br><br><strong>Hotel Consigliati:</strong><br><span class="hotel-list">🏨 <strong>Acquamarina Hotel</strong> (300m) - <a href="tel:+393487023136" class="phone-link">348 702 3136</a><br>🏨 <strong>Palace Hotel</strong> (2km) - <a href="tel:+390968932199" class="phone-link">0968 93219</a><br>🏨 <strong>Hotel Lions</strong> (2km) - <a href="tel:+390968999870" class="phone-link">0968 999870</a><br>🏨 <strong>Crialesi Boutique Room</strong> (5km) - <a href="tel:+393533412921" class="phone-link">353 341 2921</a></span><br><br><strong>RSVP entro il 30 Aprile 2026 al numero:</strong><br><a href="tel:+393461743240" class="phone-link">3461743240</a> (Ornella) o <a href="tel:+393392165378" class="phone-link">3392165378</a> (Francesco)</p>
-            <p class="lang-en"><strong>Parking:</strong> Available at the venue<br><br><strong>Recommended Hotels:</strong><br><span class="hotel-list">🏨 <strong>Acquamarina Hotel</strong> (300m) - <a href="tel:+393487023136" class="phone-link">348 702 3136</a><br>🏨 <strong>Palace Hotel</strong> (2km) - <a href="tel:+390968932199" class="phone-link">0968 93219</a><br>🏨 <strong>Hotel Lions</strong> (2km) - <a href="tel:+390968999870" class="phone-link">0968 999870</a><br>🏨 <strong>Crialesi Boutique Room</strong> (5km) - <a href="tel:+393533412921" class="phone-link">353 341 2921</a></span><br><br><strong>RSVP by April 30, 2026 to:</strong><br><a href="tel:+393461743240" class="phone-link">3461743240</a> (Ornella) or <a href="tel:+393392165378" class="phone-link">3392165378</a> (Francesco)</p>
+            <p class="lang-it">
+                <strong>Parcheggio:</strong> Disponibile presso la villa<br><br>
+                <strong>Hotel Consigliati:</strong><br>
+                <span class="hotel-list">
+                    <span class="hotel-item">🏨 <strong>Acquamarina Hotel</strong> (300m)<br><a href="tel:+393487023136" class="phone-link">348 702 3136</a></span><br>
+                    <span class="hotel-item">🏨 <strong>Palace Hotel</strong> (2km)<br><a href="tel:+390968932199" class="phone-link">0968 93219</a></span><br>
+                    <span class="hotel-item">🏨 <strong>Hotel Lions</strong> (2km)<br><a href="tel:+390968999870" class="phone-link">0968 999870</a></span><br>
+                    <span class="hotel-item">🏨 <strong>Crialesi Boutique Room</strong> (5km)<br><a href="tel:+393533412921" class="phone-link">353 341 2921</a></span>
+                </span><br><br>
+                <strong>RSVP entro il 15 Luglio 2026 al numero:</strong><br>
+                <a href="tel:+393461743240" class="phone-link">3461743240</a> (Ornella) o <a href="tel:+393392165378" class="phone-link">3392165378</a> (Francesco)<br>
+				<strong>o compilando il modulo qui sotto:</strong><br>
+            </p>
+            <p class="lang-en">
+                <strong>Parking:</strong> Available at the venue<br><br>
+                <strong>Recommended Hotels:</strong><br>
+                <span class="hotel-list">
+                    <span class="hotel-item">🏨 <strong>Acquamarina Hotel</strong> (300m)<br><a href="tel:+393487023136" class="phone-link">348 702 3136</a></span><br>
+                    <span class="hotel-item">🏨 <strong>Palace Hotel</strong> (2km)<br><a href="tel:+390968932199" class="phone-link">0968 93219</a></span><br>
+                    <span class="hotel-item">🏨 <strong>Hotel Lions</strong> (2km)<br><a href="tel:+390968999870" class="phone-link">0968 999870</a></span><br>
+                    <span class="hotel-item">🏨 <strong>Crialesi Boutique Room</strong> (5km)<br><a href="tel:+393533412921" class="phone-link">353 341 2921</a></span>
+                </span><br><br>
+                <strong>RSVP by 15th July 2026 to:</strong><br>
+                <a href="tel:+393461743240" class="phone-link">3461743240</a> (Ornella) or <a href="tel:+393392165378" class="phone-link">3392165378</a> (Francesco)<br>
+				<strong>or fill in the form below :</strong><br>
+            </p>
         </div>
+        
         <div class="info-box">
             <h2 class="lang-it"><span class="icon">✈️</span> Viaggio di Nozze</h2>
             <h2 class="lang-en"><span class="icon">✈️</span> Honeymoon</h2>
@@ -653,71 +752,133 @@
             <div class="gift-reveal-container">
                 <button class="gift-reveal-button lang-it" onclick="toggleGiftInfo()">Mostra dettagli</button>
                 <button class="gift-reveal-button lang-en" onclick="toggleGiftInfo()">Show details</button>
-                <div class="gift-info-hidden" id="giftInfo"><div class="gift-info-content">
-                    <p class="lang-it" style="margin-bottom:15px;font-size:1.1em">Potete contribuire al nostro viaggio con un bonifico a:</p>
-                    <p class="lang-en" style="margin-bottom:15px;font-size:1.1em">You can contribute to our trip with a bank transfer to:</p>
-                    <div class="iban-box"><strong class="lang-it">Intestatario:</strong><strong class="lang-en">Beneficiary:</strong> Francesco Frustaci & Ornella Barberio<br><strong>IBAN:</strong> <span class="iban-code">LT12 3250 0874 1635 8434</span><br><strong class="lang-it">Causale:</strong><strong class="lang-en">Reference:</strong> <span class="lang-it">Viaggio di nozze Francesco & Ornella</span><span class="lang-en">Honeymoon Francesco & Ornella</span></div>
-                    <button class="copy-iban-btn lang-it" onclick="copyIban(event)">Copia IBAN</button>
-                    <button class="copy-iban-btn lang-en" onclick="copyIban(event)">Copy IBAN</button>
-                </div></div>
+                <div class="gift-info-hidden" id="giftInfo">
+                    <div class="gift-info-content">
+                        <p class="lang-it" style="margin-bottom:15px;font-size:1.1em">Potete contribuire al nostro viaggio con un bonifico a:</p>
+                        <p class="lang-en" style="margin-bottom:15px;font-size:1.1em">You can contribute to our trip with a bank transfer to:</p>
+                        <div class="iban-box">
+                            <strong class="lang-it">Intestatario:</strong>
+                            <strong class="lang-en">Beneficiary:</strong> Francesco Frustaci & Ornella Barberio<br>
+                            <strong>IBAN:</strong> <span class="iban-code">LT12 3250 0874 1635 8434</span><br>
+                            <strong class="lang-it">Causale:</strong>
+                            <strong class="lang-en">Reference:</strong> 
+                            <span class="lang-it">Viaggio di nozze Francesco & Ornella</span>
+                            <span class="lang-en">Honeymoon Francesco & Ornella</span>
+                        </div>
+                        <button class="copy-iban-btn lang-it" onclick="copyIban(event)">Copia IBAN</button>
+                        <button class="copy-iban-btn lang-en" onclick="copyIban(event)">Copy IBAN</button>
+                    </div>
+                </div>
             </div>
         </div>
+        
         <div class="rsvp-form">
             <h2 class="lang-it">Conferma la tua Presenza</h2>
             <h2 class="lang-en">Confirm Your Attendance</h2>
             <form id="rsvpForm">
-                <div class="form-group"><label class="lang-it">Nome e Cognome *</label><label class="lang-en">Full Name *</label><input type="text" name="nome" required></div>
-                <div class="form-group"><label class="lang-it">Telefono</label><label class="lang-en">Phone</label><input type="tel" name="telefono"></div>
-                <div class="form-group"><label class="lang-it">Parteciperò *</label><label class="lang-en">I will attend *</label><select name="presenza" id="presenzaSelect" onchange="handlePresenzaChange()" required></select></div>
-                <div class="form-group"><label class="lang-it">Numero di adulti *</label><label class="lang-en">Number of adults *</label><input type="number" id="numAdulti" name="adulti" min="1" max="10" value="0" required></div>
-                <div class="form-group"><label class="lang-it">Numero di bambini</label><label class="lang-en">Number of children</label><input type="number" id="numBambini" name="bambini" min="0" max="10" value="0"></div>
+                <div class="form-group">
+                    <label class="lang-it">Nome e Cognome *</label>
+                    <label class="lang-en">Full Name *</label>
+                    <input type="text" name="nome" required>
+                </div>
+                <div class="form-group">
+                    <label class="lang-it">Telefono</label>
+                    <label class="lang-en">Phone</label>
+                    <input type="tel" name="telefono">
+                </div>
+                <div class="form-group">
+                    <label class="lang-it">Parteciperò *</label>
+                    <label class="lang-en">I will attend *</label>
+                    <select name="presenza" id="presenzaSelect" onchange="handlePresenzaChange()" required></select>
+                </div>
+                <div class="form-group">
+                    <label class="lang-it">Numero di adulti *</label>
+                    <label class="lang-en">Number of adults *</label>
+                    <input type="number" id="numAdulti" name="adulti" min="1" max="10" value="0" required>
+                </div>
+                <div class="form-group">
+                    <label class="lang-it">Numero di bambini</label>
+                    <label class="lang-en">Number of children</label>
+                    <input type="number" id="numBambini" name="bambini" min="0" max="10" value="0">
+                </div>
                 <div class="form-group" id="menuContainer"></div>
-                <div class="form-group"><label class="lang-it">Intolleranze o allergie alimentari</label><label class="lang-en">Food intolerances or allergies</label><textarea name="intolleranze" rows="3" id="intolleranze"></textarea></div>
-                <div class="form-group"><label class="lang-it">Un messaggio per noi</label><label class="lang-en">A message for us</label><textarea name="messaggio" rows="4" id="messaggio"></textarea></div>
+                <div class="form-group">
+                    <label class="lang-it">Intolleranze o allergie alimentari</label>
+                    <label class="lang-en">Food intolerances or allergies</label>
+                    <textarea name="intolleranze" rows="3" id="intolleranze"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="lang-it">Un messaggio per noi</label>
+                    <label class="lang-en">A message for us</label>
+                    <textarea name="messaggio" rows="4" id="messaggio"></textarea>
+                </div>
                 <button type="submit" class="lang-it">Invia Conferma</button>
                 <button type="submit" class="lang-en">Send Confirmation</button>
             </form>
         </div>
     </div></section></div>
-    <div class="loader-overlay" id="loaderOverlay"><div class="loader-content"><div class="loader-spinner"></div><div class="loader-hearts">💍 ✨ 💍</div><div class="loader-text lang-it">Invio in corso...</div><div class="loader-text lang-en">Sending...</div></div></div>
-    <div class="popup-overlay" id="popupOverlay"><div class="popup-box" id="popupBox"><div class="popup-icon">✨💍✨</div><h2 class="popup-title lang-it">Grazie!</h2><h2 class="popup-title lang-en">Thank you!</h2><p class="popup-message lang-it">La tua conferma è stata ricevuta con successo!<br>Non vediamo l'ora di festeggiare insieme a te!</p><p class="popup-message lang-en">Your confirmation has been received successfully!<br>We can't wait to celebrate with you!</p><button class="popup-close lang-it" onclick="closePopup()">Perfetto!</button><button class="popup-close lang-en" onclick="closePopup()">Perfect!</button></div></div>
-    <footer><p class="lang-it">Non vediamo l'ora di festeggiare con voi!</p><p class="lang-en">We can't wait to celebrate with you!</p><p style="font-size:0.9em;margin-top:10px"><span class="lang-it">Con amore, Francesco e Ornella</span><span class="lang-en">With love, Francesco and Ornella</span></p></footer>
-	<audio id="backgroundMusic" loop>
-    <source src="songs.mp3" type="audio/mpeg">
-</audio>
-
-<!-- Popup permesso audio -->
-<div class="audio-permission-popup" id="audioPermission">
-    <div class="audio-permission-box">
-        <div class="popup-icon-audio">🎵</div>
-        <h3 class="lang-it">Ascolta la nostra canzone</h3>
-        <h3 class="lang-en">Listen to our song</h3>
-        <p class="lang-it">Vuoi ascoltare la musica mentre navighi il sito?</p>
-        <p class="lang-en">Would you like to listen to music while browsing?</p>
-        <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-            <button class="audio-btn-yes lang-it" onclick="startMusic()">
-                Sì, attiva la musica! 🎶
-            </button>
-            <button class="audio-btn-yes lang-en" onclick="startMusic()">
-                Yes, play music! 🎶
-            </button>
-            <button class="audio-btn-no" onclick="declineMusic()">
-                <span class="lang-it">No, grazie</span>
-                <span class="lang-en">No, thanks</span>
-            </button>
+    
+    <div class="loader-overlay" id="loaderOverlay">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <div class="loader-hearts">💍 ✨ 💍</div>
+            <div class="loader-text lang-it">Invio in corso...</div>
+            <div class="loader-text lang-en">Sending...</div>
         </div>
     </div>
-</div>
-
-<!-- Pulsante audio vicino alle lingue -->
-<div class="audio-control" id="audioControl" style="display: none;">
-    <button class="audio-toggle-btn" onclick="toggleMusic()" id="audioToggleBtn">
-        🔊
-    </button>
-</div>
+    
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-box" id="popupBox">
+            <div class="popup-icon">✨💍✨</div>
+            <h2 class="popup-title lang-it">Grazie!</h2>
+            <h2 class="popup-title lang-en">Thank you!</h2>
+            <p class="popup-message lang-it">La tua conferma è stata ricevuta con successo!<br>Non vediamo l'ora di festeggiare insieme a te!</p>
+            <p class="popup-message lang-en">Your confirmation has been received successfully!<br>We can't wait to celebrate with you!</p>
+            <button class="popup-close lang-it" onclick="closePopup()">Perfetto!</button>
+            <button class="popup-close lang-en" onclick="closePopup()">Perfect!</button>
+        </div>
+    </div>
+    
+    <footer>
+        <p class="lang-it">Non vediamo l'ora di festeggiare con voi!</p>
+        <p class="lang-en">We can't wait to celebrate with you!</p>
+        <p style="font-size:0.9em;margin-top:10px">
+            <span class="lang-it"> Ornella e Francesco</span>
+            <span class="lang-en"> Ornella e Francesco</span>
+        </p>
+    </footer>
+    
+    <audio id="backgroundMusic" loop>
+        <source src="songs.mp3" type="audio/mpeg">
+    </audio>
+    
+    <div class="audio-permission-popup" id="audioPermission">
+        <div class="audio-permission-box">
+            <div class="popup-icon-audio">🎵</div>
+            <h3 class="lang-it">Ascolta la nostra canzone</h3>
+            <h3 class="lang-en">Listen to our song</h3>
+            <p class="lang-it">Vuoi ascoltare la musica mentre navighi il sito?</p>
+            <p class="lang-en">Would you like to listen to music while browsing?</p>
+            <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                <button class="audio-btn-yes lang-it" onclick="startMusic()">
+                    Sì, attiva la musica! 🎶
+                </button>
+                <button class="audio-btn-yes lang-en" onclick="startMusic()">
+                    Yes, play music! 🎶
+                </button>
+                <button class="audio-btn-no" onclick="declineMusic()">
+                    <span class="lang-it">No, grazie</span>
+                    <span class="lang-en">No, thanks</span>
+                </button>
+            </div>
+        </div>
+    </div>
 	
 	
-    <script>
+ <script>
+        let audio;
+        let isPlaying = false;
+        
         function updateCountdown() {
             const weddingDate = new Date('2026-08-24T18:00:00').getTime();
             const now = new Date().getTime();
@@ -729,8 +890,10 @@
                 document.getElementById('seconds').textContent = Math.floor((distance % (1000 * 60)) / 1000);
             }
         }
+        
         function createSparkles() {
             const container = document.getElementById('sparkles');
+            container.innerHTML = '';
             for (let i = 0; i < (window.innerWidth < 768 ? 15 : 30); i++) {
                 const sparkle = document.createElement('div');
                 sparkle.className = 'sparkle';
@@ -740,13 +903,16 @@
                 container.appendChild(sparkle);
             }
         }
+        
         function animateOnScroll() {
             document.querySelectorAll('.info-box').forEach(box => {
                 if (box.getBoundingClientRect().top < window.innerHeight * 0.8) box.classList.add('visible');
             });
         }
+        
         function showLoader() { document.getElementById('loaderOverlay').classList.add('show'); }
         function hideLoader() { document.getElementById('loaderOverlay').classList.remove('show'); }
+        
         function populatePresenzaSelect() {
             const select = document.getElementById('presenzaSelect');
             const lang = document.body.classList.contains('lang-english') ? 'en' : 'it';
@@ -757,11 +923,36 @@
             else if (saved === 'si' && lang === 'en') select.value = 'yes';
             else if (saved === 'yes' && lang === 'it') select.value = 'si';
         }
+        
         function handlePresenzaChange() {
             const presenza = document.querySelector('select[name="presenza"]').value;
-            document.getElementById('numAdulti').value = (presenza === 'si' || presenza === 'yes') ? 1 : 0;
+            const numAdultiInput = document.getElementById('numAdulti');
+            const numBambiniInput = document.getElementById('numBambini');
+            const intolleranzeTextarea = document.querySelector('textarea[name="intolleranze"]');
+            
+            if (presenza === 'no') {
+                // Risposta negativa - disabilita campi
+                numAdultiInput.value = 0;
+                numAdultiInput.min = 0;
+                numAdultiInput.disabled = true;
+                numBambiniInput.value = 0;
+                numBambiniInput.min = 0;
+                numBambiniInput.disabled = true;
+                intolleranzeTextarea.disabled = true;
+                intolleranzeTextarea.value = '';
+            } else if (presenza === 'si' || presenza === 'yes') {
+                // Risposta positiva - abilita campi
+                numAdultiInput.value = 1;
+                numAdultiInput.min = 1;
+                numAdultiInput.disabled = false;
+                numBambiniInput.value = 0;
+                numBambiniInput.min = 0;
+                numBambiniInput.disabled = false;
+                intolleranzeTextarea.disabled = false;
+            }
             generateMenuFields();
         }
+        
         function generateMenuFields() {
             const numAdulti = parseInt(document.getElementById('numAdulti').value) || 0;
             const numBambini = parseInt(document.getElementById('numBambini').value) || 0;
@@ -802,14 +993,17 @@
                 container.appendChild(div);
             }
         }
+        
         document.getElementById('numAdulti').addEventListener('change', generateMenuFields);
         document.getElementById('numBambini').addEventListener('change', generateMenuFields);
+        
         document.getElementById('rsvpForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             showLoader();
             const formData = new FormData(this);
             const numAdulti = parseInt(formData.get('adulti')) || 0;
             const numBambini = parseInt(formData.get('bambini')) || 0;
+            const presenza = formData.get('presenza');
             let menuPreferences = [];
             for (let i = 1; i <= numAdulti; i++) {
                 const menu = formData.get('menu_adulto_' + i);
@@ -841,19 +1035,43 @@
                     new Promise(resolve => setTimeout(resolve, 1500))
                 ]);
                 hideLoader();
-                showPopup();
+                showPopup(presenza === 'no');
                 this.reset();
                 populatePresenzaSelect();
+                // Re-abilita i campi dopo il reset
+                document.getElementById('numAdulti').disabled = false;
+                document.getElementById('numBambini').disabled = false;
+                document.querySelector('textarea[name="intolleranze"]').disabled = false;
             } catch (error) {
                 hideLoader();
                 alert('Si è verificato un errore. Riprova più tardi.');
             }
         });
-        function showPopup() {
-            document.getElementById('popupOverlay').style.display = 'block';
-            createConfetti();
+        
+        function showPopup(isNegativeResponse) {
+            const popupOverlay = document.getElementById('popupOverlay');
+            const lang = document.body.classList.contains('lang-english') ? 'en' : 'it';
+            
+            // Modifica il messaggio in base alla risposta
+            const messageIt = document.querySelector('.popup-message.lang-it');
+            const messageEn = document.querySelector('.popup-message.lang-en');
+            
+            if (isNegativeResponse) {
+                messageIt.innerHTML = 'La tua risposta è stata ricevuta con successo!<br>Ci dispiace che non potrai esserci, ma ti ringraziamo per averci fatto sapere.';
+                messageEn.innerHTML = 'Your response has been received successfully!<br>We\'re sorry you can\'t make it, but thank you for letting us know.';
+            } else {
+                messageIt.innerHTML = 'La tua conferma è stata ricevuta con successo!<br>Non vediamo l\'ora di festeggiare insieme a te!';
+                messageEn.innerHTML = 'Your confirmation has been received successfully!<br>We can\'t wait to celebrate with you!';
+            }
+            
+            popupOverlay.style.display = 'block';
+            if (!isNegativeResponse) {
+                createConfetti();
+            }
         }
+        
         function closePopup() { document.getElementById('popupOverlay').style.display = 'none'; }
+        
         function createConfetti() {
             const popup = document.getElementById('popupBox');
             const colors = ['#c9a961', '#b8945a', '#d4af6a', '#a08763'];
@@ -868,18 +1086,33 @@
                 setTimeout(() => confetti.remove(), 3000);
             }
         }
+        
         document.getElementById('popupOverlay').addEventListener('click', function(e) {
             if (e.target === this) closePopup();
         });
+        
         function toggleGiftInfo() {
             const info = document.getElementById('giftInfo');
+            const btnIt = document.querySelector('.gift-reveal-button.lang-it');
+            const btnEn = document.querySelector('.gift-reveal-button.lang-en');
+            
             info.classList.toggle('show');
-        }
+            
+            if (info.classList.contains('show')) {
+                btnIt.textContent = 'Nascondi dettagli';
+                btnEn.textContent = 'Hide details';
+            } else {
+                btnIt.textContent = 'Mostra dettagli';
+                btnEn.textContent = 'Show details';
+            }
+		}
+        
         function setCookie(name, value, days) {
             const d = new Date();
             d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
             document.cookie = name + "=" + value + ";expires=" + d.toUTCString() + ";path=/";
         }
+        
         function getCookie(name) {
             const nameEQ = name + "=";
             const ca = document.cookie.split(';');
@@ -890,6 +1123,7 @@
             }
             return null;
         }
+        
         function setLanguage(lang) {
             if (lang === 'en') {
                 document.body.classList.add('lang-english');
@@ -905,6 +1139,7 @@
             populatePresenzaSelect();
             generateMenuFields();
         }
+        
         function updateTextareaPlaceholders(lang) {
             const intolleranze = document.getElementById('intolleranze');
             const messaggio = document.getElementById('messaggio');
@@ -916,10 +1151,12 @@
                 messaggio.placeholder = 'Lasciaci un messaggio speciale...';
             }
         }
+        
         function loadSavedLanguage() {
             const saved = getCookie('language');
             setLanguage(saved === 'en' ? 'en' : 'it');
         }
+        
         function copyIban(event) {
             const iban = 'LT123250087416358434';
             navigator.clipboard.writeText(iban).then(function() {
@@ -935,56 +1172,59 @@
                 alert('IBAN: ' + iban);
             });
         }
-		
-		let audio;
-let isPlaying = false;
-
-function showAudioPermission() {
-    setTimeout(() => {
-        document.getElementById('audioPermission').classList.add('show');
-    }, 2000);
-}
-
-function startMusic() {
-    audio = document.getElementById('backgroundMusic');
-    audio.volume = 0.3;
-    
-    audio.play().then(() => {
-        isPlaying = true;
-        document.getElementById('audioControl').style.display = 'block';
-        document.getElementById('audioPermission').classList.remove('show');
-        document.getElementById('audioToggleBtn').textContent = '🔊';
-    }).catch(err => {
-        console.log('Autoplay bloccato:', err);
-    });
-}
-
-function declineMusic() {
-    document.getElementById('audioPermission').classList.remove('show');
-}
-
-function toggleMusic() {
-    if (!audio) {
-        audio = document.getElementById('backgroundMusic');
-    }
-    
-    const btn = document.getElementById('audioToggleBtn');
-    
-    if (isPlaying) {
-        audio.pause();
-        btn.textContent = '🔇';
-        btn.classList.add('muted');
-        isPlaying = false;
-    } else {
-        audio.play();
-        btn.textContent = '🔊';
-        btn.classList.remove('muted');
-        isPlaying = true;
-    }
-}
-
-		
-		
+        
+        function showAudioPermission() {
+            setTimeout(() => {
+                document.getElementById('audioPermission').classList.add('show');
+            }, 2000);
+        }
+        
+        function startMusic() {
+            audio = document.getElementById('backgroundMusic');
+            audio.volume = 0.3;
+            
+            audio.play().then(() => {
+                isPlaying = true;
+                document.getElementById('audioControl').style.display = 'block';
+                document.getElementById('audioPermission').classList.remove('show');
+                document.getElementById('audioToggleBtn').textContent = '🔊';
+                document.getElementById('audioToggleBtn').classList.remove('muted');
+            }).catch(err => {
+                console.log('Autoplay bloccato:', err);
+            });
+        }
+        
+        function declineMusic() {
+            document.getElementById('audioPermission').classList.remove('show');
+            document.getElementById('audioControl').style.display = 'block';
+            document.getElementById('audioToggleBtn').textContent = '🔇';
+            document.getElementById('audioToggleBtn').classList.add('muted');
+        }
+        
+        function toggleMusic() {
+            if (!audio) {
+                audio = document.getElementById('backgroundMusic');
+                audio.volume = 0.3;
+            }
+            
+            const btn = document.getElementById('audioToggleBtn');
+            
+            if (isPlaying) {
+                audio.pause();
+                btn.textContent = '🔇';
+                btn.classList.add('muted');
+                isPlaying = false;
+            } else {
+                audio.play().then(() => {
+                    btn.textContent = '🔊';
+                    btn.classList.remove('muted');
+                    isPlaying = true;
+                }).catch(err => {
+                    console.log('Errore riproduzione:', err);
+                });
+            }
+        }
+        
         createSparkles();
         updateCountdown();
         setInterval(updateCountdown, 1000);
@@ -993,8 +1233,9 @@ function toggleMusic() {
         animateOnScroll();
         loadSavedLanguage();
         populatePresenzaSelect();
-		showAudioPermission();
-
+        showAudioPermission();
     </script>
+
+	
 </body>
 </html>
