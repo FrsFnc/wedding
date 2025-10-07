@@ -1405,7 +1405,68 @@
               <a href="https://www.google.com/maps/search/?api=1&query=Villa+Grandinetti+Nocera+Terinese" target="_blank" class="maps-button">Open in Google Maps</a>
             </p>
           </div>
+          
+		  <div class="info-box photo-upload-section">
+    <h2 class="lang-it"><span class="icon">📸</span> Condividi i tuoi Ricordi</h2>
+    <h2 class="lang-en"><span class="icon">📸</span> Share Your Memories</h2>
+    
+    <p class="lang-it">
+        Aiutaci a raccogliere tutti i momenti speciali del nostro grande giorno!<br>
+        Carica le tue foto e video del matrimonio.
+    </p>
+    <p class="lang-en">
+        Help us collect all the special moments of our big day!<br>
+        Upload your wedding photos and videos.
+    </p>
+    
+    <a href="https://forms.gle/NbAdKbETepigJm2f8" target="_blank" class="upload-button lang-it">
+        📤 Carica le tue Foto
+    </a>
+    <a href="https://forms.gle/NbAdKbETepigJm2f8" target="_blank" class="upload-button lang-en">
+        📤 Upload Your Photos
+    </a>
+    
+    <p class="upload-info lang-it">
+        Accettiamo foto e video (max 10MB per file)
+    </p>
+    <p class="upload-info lang-en">
+        We accept photos and videos (max 10MB per file)
+    </p>
+</div>
           <div class="info-box">
+            <h2 class="lang-it">
+              <span class="icon">✈️</span> Viaggio di Nozze
+            </h2>
+            <h2 class="lang-en">
+              <span class="icon">✈️</span> Honeymoon
+            </h2>
+            <p class="lang-it" style="margin-bottom:20px">Il regalo più grande per noi è la vostra presenza! <br>Se desiderate contribuire al nostro viaggio di nozze, <br>saremo felici di ricevere il vostro pensiero. </p>
+            <p class="lang-en" style="margin-bottom:20px">Your presence is the greatest gift! <br>If you wish to contribute to our honeymoon, <br>we would be delighted to receive your thoughtful gesture. </p>
+            <div class="gift-reveal-container">
+              <button class="gift-reveal-button lang-it" onclick="toggleGiftInfo()">Mostra dettagli</button>
+              <button class="gift-reveal-button lang-en" onclick="toggleGiftInfo()">Show details</button>
+              <div class="gift-info-hidden" id="giftInfo">
+                <div class="gift-info-content">
+                  <p class="lang-it" style="margin-bottom:15px;font-size:1.1em">Potete contribuire al nostro viaggio con un bonifico a:</p>
+                  <p class="lang-en" style="margin-bottom:15px;font-size:1.1em">You can contribute to our trip with a bank transfer to:</p>
+                  <div class="iban-box">
+                    <strong class="lang-it">Intestatario:</strong>
+                    <strong class="lang-en">Beneficiary:</strong> Francesco Frustaci & Ornella Barberio <br>
+                    <strong>IBAN:</strong>
+                    <span class="iban-code">LT12 3250 0874 1635 8434</span>
+                    <br>
+                    <strong class="lang-it">Causale:</strong>
+                    <strong class="lang-en">Reference:</strong>
+                    <span class="lang-it">Viaggio di nozze Francesco & Ornella</span>
+                    <span class="lang-en">Honeymoon Francesco & Ornella</span>
+                  </div>
+                  <button class="copy-iban-btn lang-it" onclick="copyIban(event)">Copia IBAN</button>
+                  <button class="copy-iban-btn lang-en" onclick="copyIban(event)">Copy IBAN</button>
+                </div>
+              </div>
+            </div>
+          </div>
+		   <div class="info-box">
             <h2 class="lang-it">
               <span class="icon">ℹ️</span> Informazioni Utili
             </h2>
@@ -1472,39 +1533,6 @@
               <strong>or fill in the form below :</strong>
               <br>
             </p>
-          </div>
-          <div class="info-box">
-            <h2 class="lang-it">
-              <span class="icon">✈️</span> Viaggio di Nozze
-            </h2>
-            <h2 class="lang-en">
-              <span class="icon">✈️</span> Honeymoon
-            </h2>
-            <p class="lang-it" style="margin-bottom:20px">Il regalo più grande per noi è la vostra presenza! <br>Se desiderate contribuire al nostro viaggio di nozze, <br>saremo felici di ricevere il vostro pensiero. </p>
-            <p class="lang-en" style="margin-bottom:20px">Your presence is the greatest gift! <br>If you wish to contribute to our honeymoon, <br>we would be delighted to receive your thoughtful gesture. </p>
-            <div class="gift-reveal-container">
-              <button class="gift-reveal-button lang-it" onclick="toggleGiftInfo()">Mostra dettagli</button>
-              <button class="gift-reveal-button lang-en" onclick="toggleGiftInfo()">Show details</button>
-              <div class="gift-info-hidden" id="giftInfo">
-                <div class="gift-info-content">
-                  <p class="lang-it" style="margin-bottom:15px;font-size:1.1em">Potete contribuire al nostro viaggio con un bonifico a:</p>
-                  <p class="lang-en" style="margin-bottom:15px;font-size:1.1em">You can contribute to our trip with a bank transfer to:</p>
-                  <div class="iban-box">
-                    <strong class="lang-it">Intestatario:</strong>
-                    <strong class="lang-en">Beneficiary:</strong> Francesco Frustaci & Ornella Barberio <br>
-                    <strong>IBAN:</strong>
-                    <span class="iban-code">LT12 3250 0874 1635 8434</span>
-                    <br>
-                    <strong class="lang-it">Causale:</strong>
-                    <strong class="lang-en">Reference:</strong>
-                    <span class="lang-it">Viaggio di nozze Francesco & Ornella</span>
-                    <span class="lang-en">Honeymoon Francesco & Ornella</span>
-                  </div>
-                  <button class="copy-iban-btn lang-it" onclick="copyIban(event)">Copia IBAN</button>
-                  <button class="copy-iban-btn lang-en" onclick="copyIban(event)">Copy IBAN</button>
-                </div>
-              </div>
-            </div>
           </div>
           <div class="rsvp-form">
             <h2 class="lang-it">Conferma la tua Presenza</h2>
@@ -1642,6 +1670,7 @@ let audio;
  			children: '👶 I bambini sono benvenuti! Abbiamo un menu speciale per loro e potrai indicare eventuali allergie nel modulo RSVP.',
  			allergies: '⚠️ Nel modulo RSVP c\'è uno spazio dedicato per segnalare intolleranze e allergie alimentari. Faremo in modo di soddisfare tutte le esigenze!',
  			contact: '📞 Contatti:\n- Ornella: 3461743240\n- Francesco: 3392165378\nNon esitare a chiamarci per qualsiasi domanda!',
+			photos: '📸 Puoi caricare le tue foto del matrimonio cliccando sul pulsante "Carica le tue Foto" nella sezione dedicata della pagina!',
  			directions: '🗺️ Puoi trovare Villa Grandinetti su Google Maps cliccando il pulsante "Apri in Google Maps" nella sezione Cerimonia.',
  			default: 'Mi dispiace, non ho capito bene la tua domanda. Ecco alcuni argomenti su cui posso aiutarti:'
  		},
@@ -1650,7 +1679,8 @@ let audio;
  			'Quando è il matrimonio?',
  			'Hotel consigliati',
  			'Come confermo?',
- 			'Info sui regali'
+ 			'Info sui regali',
+			'Come carico le foto?'
  		]
  	},
  	en: {
@@ -1667,6 +1697,7 @@ let audio;
  			children: '👶 Children are welcome! We have a special menu for them and you can indicate any allergies in the RSVP form.',
  			allergies: '⚠️ The RSVP form has a dedicated space to report food intolerances and allergies. We will make sure to meet all needs!',
  			contact: '📞 Contacts:\n- Ornella: 3461743240\n- Francesco: 3392165378\nDon\'t hesitate to call us for any questions!',
+			photos: '📸 You can upload your wedding photos by clicking the "Upload Your Photos" button in the dedicated section on the page!',
  			directions: '🗺️ You can find Villa Grandinetti on Google Maps by clicking the "Open in Google Maps" button in the Ceremony section.',
  			default: 'I\'m sorry, I didn\'t quite understand your question. Here are some topics I can help you with:'
  		},
@@ -1675,7 +1706,8 @@ let audio;
  			'When is the wedding?',
  			'Recommended hotels',
  			'How to RSVP?',
- 			'Gift info'
+ 			'Gift info',
+			'How to upload photos?'
  		]
  	}
  };
@@ -1818,17 +1850,41 @@ let audio;
  		children: ['bambini', 'bambino', 'figli', 'figlio', 'children', 'kids', 'child'],
  		allergies: ['allergie', 'allergia', 'intolleranze', 'intolleranza', 'allergies', 'intolerances', 'celiaco', 'celiac'],
  		contact: ['contatto', 'contatti', 'telefono', 'chiamare', 'contact', 'phone', 'call', 'numero', 'telefonare'],
- 		directions: ['arrivare', 'arrivo', 'indicazioni', 'strada', 'directions', 'how to get', 'navigate', 'come arrivo', 'come raggiungo']
+		photos: ['foto', 'fotografie', 'immagini', 'video', 'caricare', 'carico', 'photos', 'pictures', 'images', 'upload', 'share', 'condividere', 'ricordi', 'memories', 'scaricare'],
+ 		directions: ['arrivare', 'arrivo', 'indicazioni', 'strada', 'directions', 'how to get', 'navigate', 'come arrivo', 'come raggiungo'],
+		
  	};
 
- 	for (const [key, words] of Object.entries(keywords)) {
- 		if (words.some(word => msg.includes(word))) {
- 			return kb.responses[key];
- 		}
- 	}
+ 	    // Calcola punteggio per ogni categoria
+    const scores = {};
+    for (const [key, words] of Object.entries(keywords)) {
+        scores[key] = 0;
+        for (const word of words) {
+            // Usa word boundary per match preciso
+            const regex = new RegExp('\\b' + word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i');
+            if (regex.test(msg)) {
+                scores[key]++;
+            }
+        }
+    }
 
- 	return kb.responses.default;
- }
+    // Trova la categoria con punteggio più alto
+    let maxScore = 0;
+    let bestMatch = null;
+    for (const [key, score] of Object.entries(scores)) {
+        if (score > maxScore) {
+            maxScore = score;
+            bestMatch = key;
+        }
+    }
+
+    // Se c'è un match, ritorna la risposta
+    if (bestMatch && maxScore > 0) {
+        return kb.responses[bestMatch];
+    }
+
+    return kb.responses.default;
+}
 
  function sendChatMessage() {
  	const lang = document.body.classList.contains('lang-english') ? 'en' : 'it';
@@ -2133,6 +2189,7 @@ let audio;
  	updateTextareaPlaceholders(lang);
  	populatePresenzaSelect();
  	generateMenuFields();
+	reloadChatbot();
  }
 
  function updateTextareaPlaceholders(lang) {
@@ -2232,12 +2289,50 @@ let audio;
  	if (audio && document.hidden) {
  		audio.pause();
  	} else {
- 		// Opzionale: riprendi quando si torna sulla pagina
+ 		
  		audio.play();
  	}
  })
 
-
+ 
+ function reloadChatbot() {
+    const messagesDiv = document.getElementById('chatbotMessages');
+    
+    // Animazione di fade out
+    messagesDiv.style.opacity = '0';
+    messagesDiv.style.transition = 'opacity 0.3s ease';
+    
+    setTimeout(() => {
+        // Svuota i messaggi
+        messagesDiv.innerHTML = '';
+        
+        // Reinizializza con il messaggio di benvenuto
+        const lang = document.body.classList.contains('lang-english') ? 'en' : 'it';
+        const welcomeMessage = lang === 'en' 
+            ? '👋 Hello! I\'m the wedding assistant. Ask me anything about Ornella and Francesco\'s big day!'
+            : '👋 Ciao! Sono l\'assistente del matrimonio. Chiedimi tutto su questo grande giorno di Ornella e Francesco!';
+        
+        addBotMessage(welcomeMessage, true);
+        
+        // Aggiorna il placeholder dell'input
+        const inputIt = document.getElementById('chatbotInputIt');
+        const inputEn = document.getElementById('chatbotInputEn');
+        
+        if (lang === 'en') {
+            inputIt.style.display = 'none';
+            inputEn.style.display = 'block';
+        } else {
+            inputIt.style.display = 'block';
+            inputEn.style.display = 'none';
+        }
+        
+        // Animazione di fade in
+        messagesDiv.style.opacity = '1';
+    }, 300);
+}
+ 
+ 
+ 
  createSparkles();
  updateCountdown();
  setInterval(updateCountdown, 1000);
