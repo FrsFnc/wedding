@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Il Nostro Matrimonio</title>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-SPEXQ7RSYX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SPEXQ7RSYX');
+</script>
+	
+	
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
       * {
@@ -1980,6 +1990,14 @@ function openEnvelope() {
   if (envelopeOpened) return;
   envelopeOpened = true;
   
+   if (typeof gtag !== 'undefined') {
+    gtag('event', 'apertura_busta', {
+      'event_category': 'engagement',
+      'event_label': 'Invito Matrimonio'
+    });
+  }
+  
+  
   const container = document.getElementById('envelopeContainer');
   const mainContent = document.getElementById('mainContent');
   
@@ -2079,6 +2097,14 @@ function openEnvelope() {
  	const chatbot = document.getElementById('chatbotWindow');
  	const button = document.getElementById('chatbotButton');
  	const notification = document.getElementById('chatbotNotification');
+	
+	if (chatbotOpen && typeof gtag !== 'undefined') {
+    gtag('event', 'apertura_chatbot', {
+      'event_category': 'engagement',
+      'event_label': 'Assistente Matrimonio'
+    });
+  }
+	
 
  	chatbotOpen = !chatbotOpen;
 
@@ -2393,6 +2419,15 @@ function openEnvelope() {
 
  document.getElementById('rsvpForm').addEventListener('submit', async function(e) {
  	e.preventDefault();
+	
+	if (typeof gtag !== 'undefined') {
+    gtag('event', 'conferma_presenza', {
+      'event_category': 'conversion',
+      'event_label': presenza,
+      'value': parseInt(numAdulti)
+    });
+  }
+	
  	showLoader();
  	const formData = new FormData(this);
  	const numAdulti = parseInt(formData.get('adulti')) || 0;
@@ -2523,6 +2558,14 @@ function openEnvelope() {
  }
 
  function setLanguage(lang) {
+	if (typeof gtag !== 'undefined') {
+    gtag('event', 'cambio_lingua', {
+      'event_category': 'engagement',
+      'event_label': lang
+    });
+  }
+ 
+ 
  	if (lang === 'en') {
  		document.body.classList.add('lang-english');
  		document.getElementById('btnIt').classList.remove('active');
@@ -2559,6 +2602,15 @@ function openEnvelope() {
  function copyIban(event) {
  	const iban = 'LT123250087416358434';
  	navigator.clipboard.writeText(iban).then(function() {
+	
+	
+	 if (typeof gtag !== 'undefined') {
+      gtag('event', 'copia_iban', {
+        'event_category': 'engagement',
+        'event_label': 'Regalo'
+      });
+    }
+	
  		const btn = event.target;
  		const original = btn.textContent;
  		btn.textContent = '✓ Copiato!';
