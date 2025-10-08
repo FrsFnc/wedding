@@ -2420,19 +2420,22 @@ function openEnvelope() {
  document.getElementById('rsvpForm').addEventListener('submit', async function(e) {
  	e.preventDefault();
 	
-	if (typeof gtag !== 'undefined') {
-    gtag('event', 'conferma_presenza', {
-      'event_category': 'conversion',
-      'event_label': presenza,
-      'value': parseInt(numAdulti)
-    });
-  }
+	
 	
  	showLoader();
  	const formData = new FormData(this);
  	const numAdulti = parseInt(formData.get('adulti')) || 0;
  	const numBambini = parseInt(formData.get('bambini')) || 0;
  	const presenza = formData.get('presenza');
+
+if (typeof gtag !== 'undefined') {
+    gtag('event', 'conferma_presenza', {
+      'event_category': 'conversion',
+      'event_label': presenza,
+      'value': parseInt(numAdulti)
+    });
+  }
+	 
  	let menuPreferences = [];
  	for (let i = 1; i <= numAdulti; i++) {
  		const menu = formData.get('menu_adulto_' + i);
@@ -2776,3 +2779,4 @@ document.addEventListener('visibilitychange', () => {
     </script>
   </body>
 </html>
+
